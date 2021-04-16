@@ -33,5 +33,4 @@ jobs:
   run-dynamic:
     needs: build
     runs-on: ubuntu-latest
-    steps: 
-      - run: echo "${{fromJson(needs.build.outputs.dynamic)}}"
+    steps: ${{fromJson(needs.build.outputs.dynamic)}}
