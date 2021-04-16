@@ -29,9 +29,9 @@ jobs:
       - name: Run a multi-line script
         id: set-dynamic
         run: |
-          echo '::set-output name=dynamic::[{"run" : \"echo \"Hello from the dynamic step\""}]'
+          echo '::set-output name=dynamic::[{"run" : "echo \"Hello from the dynamic step\""}]'
   run-dynamic:
     needs: build
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "${{needs.build.outputs.dynamic}}"
+      - run: echo "${{fromJson(needs.build.outputs.dynamic)}}"
