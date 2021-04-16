@@ -30,8 +30,13 @@ jobs:
         id: set-dynamic
         run: |
           echo '::set-output name=dynamic::[{"run" : "echo \"Hello from the dynamic step\""}]'
-  run-dynamic:
+  print-dynamic:
     needs: build
     runs-on: ubuntu-latest
     steps: 
       - run: echo ${{toJson(needs.build.outputs.dynamic)}}
+      
+  run-dynamic:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: ${{toJson(needs.build.outputs.dynamic)}}
